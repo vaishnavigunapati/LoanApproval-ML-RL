@@ -13,11 +13,11 @@ The business goal: **decide whether to approve or deny a loan to maximize financ
 
 ## 📂 Project Structure
 
--Loan-Approval-Project/
---├── notebooks/
---│ ├── 1_EDA_Preprocessing.ipynb
--│ ├── 2_DL_Model.ipynb
--│ ├── 3_RL_Agent.ipynb
+Loan-Approval-Project/
+├── notebooks/
+│ ├── 1_EDA_Preprocessing.ipynb
+│ ├── 2_DL_Model.ipynb
+│ ├── 3_RL_Agent.ipynb
 │ └── 4_Comparison.ipynb
 ├── d3rlpy_logs/ # RL training logs (auto-generated)
 ├── dataset.ipynb # raw dataset exploration
@@ -142,6 +142,7 @@ RL Framework: d3rlpy Documentation
 👩‍💻 Author
 Vaishnavi Reddy Gunapati
 📧 Email: gunapativaishnavi348@gmail.com
+
 
 
 
