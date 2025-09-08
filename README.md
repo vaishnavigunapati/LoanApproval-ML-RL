@@ -1,13 +1,14 @@
-﻿# LoanApproval-ML-RL
+# 📊 Loan Approval Prediction & Policy Optimization
 
+## 🌟 Overview
+This project focuses on improving loan approval decisions using two approaches:  
 
-## 📌 Overview
-This project explores how to make better loan approval decisions using both **Deep Learning (DL)** and **Offline Reinforcement Learning (RL)**.  
+1. **Deep Learning (MLP)** → Predicts whether a loan will default or be fully paid.  
+2. **Offline Reinforcement Learning (RL)** → Learns a policy to approve or deny loans to maximize financial profit.  
 
-- **DL Model (MLP):** Predicts the probability of default for each applicant.  
-- **RL Agent (DiscreteBC):** Learns an approval policy that balances profit vs risk.  
-
-The business goal: **decide whether to approve or deny a loan to maximize financial returns**.
+The dataset comes from **LendingClub (2007–2018 accepted loans)**.  
+Since the data is large, it’s not uploaded here — instead, you can download it from Kaggle:  
+👉 [LendingClub Loan Data (Kaggle)](https://www.kaggle.com/datasets/wordsforthewise/lending-club)
 
 ---
 
@@ -15,39 +16,41 @@ The business goal: **decide whether to approve or deny a loan to maximize financ
 
 Loan-Approval-Project/
 ├── notebooks/
-│ ├── 1_EDA_Preprocessing.ipynb
-│ ├── 2_DL_Model.ipynb
-│ ├── 3_RL_Agent.ipynb
-│ └── 4_Comparison.ipynb
-├── d3rlpy_logs/ # RL training logs (auto-generated)
-├── dataset.ipynb # raw dataset exploration
+│ ├── 1_EDA_Preprocessing.ipynb # Data cleaning + feature engineering
+│ ├── 2_DL_Model.ipynb # Deep Learning model (PyTorch MLP)
+│ ├── 3_RL_Agent.ipynb # Offline RL agent (d3rlpy DiscreteBC)
+│ └── 4_Comparison.ipynb # DL vs RL results and insights
+├── dataset.ipynb # Raw dataset exploration
 ├── requirements.txt
 └── README.md
 
 yaml
 Copy code
 
-⚠️ **Note on Data:**  
-The original dataset (`accepted_2007_to_2018.csv`) is **too large to upload to GitHub**.  
-You can download it directly from Kaggle:  
-👉 [LendingClub Loan Data on Kaggle](https://www.kaggle.com/datasets/wordsforthewise/lending-club)
-
 ---
 
 ## ⚙️ Setup Instructions
 
-1. **Clone this repo**
+1. **Clone the repo**
 ```bash
 git clone https://github.com/your-username/loan-approval-project.git
 cd loan-approval-project
-Create and activate environment
+Create virtual environment
 
 bash
 Copy code
 python -m venv venv
-# Windows
+Activate environment
+
+Windows:
+
+bash
+Copy code
 venv\Scripts\activate
-# Linux/Mac
+Mac/Linux:
+
+bash
+Copy code
 source venv/bin/activate
 Install dependencies
 
@@ -56,35 +59,35 @@ Copy code
 pip install -r requirements.txt
 Download dataset
 
-Go to Kaggle and download accepted_2007_to_2018.csv.
+Get accepted_2007_to_2018.csv from Kaggle.
 
-Place it inside a folder named data/:
+Place it in:
 
 bash
 Copy code
 Loan-Approval-Project/data/accepted_2007_to_2018.csv
 🚀 How to Run
-1. Exploratory Data Analysis (EDA)
+🔍 Step 1: Exploratory Data Analysis (EDA)
 Run:
 
 bash
 Copy code
 jupyter notebook notebooks/1_EDA_Preprocessing.ipynb
-Cleans dataset, handles missing values, encodes categorical features, scales data.
+Cleans and preprocesses data.
 
-Selects useful features for modeling.
+Handles missing values, encodes categorical features, scales numeric ones.
 
-2. Deep Learning Model
+🤖 Step 2: Deep Learning Model
 Run:
 
 bash
 Copy code
 jupyter notebook notebooks/2_DL_Model.ipynb
-Trains an MLP classifier in PyTorch.
+Trains a Multi-Layer Perceptron (MLP) using PyTorch.
 
-Evaluates with AUC and F1-score.
+Evaluates performance with AUC and F1-score.
 
-3. Reinforcement Learning Agent
+🎯 Step 3: Reinforcement Learning Agent
 Run:
 
 bash
@@ -92,22 +95,24 @@ Copy code
 jupyter notebook notebooks/3_RL_Agent.ipynb
 Frames loan approval as an offline RL problem.
 
-Uses d3rlpy DiscreteBC algorithm.
+Trains a DiscreteBC agent (d3rlpy).
 
-Evaluates Estimated Policy Value (expected profit per loan).
+Evaluates with Estimated Policy Value.
 
-4. Comparison & Analysis
+⚖️ Step 4: Comparison
 Run:
 
 bash
 Copy code
 jupyter notebook notebooks/4_Comparison.ipynb
-Compares DL vs RL policies.
+Compares DL vs RL.
 
-Shows where the models agree/disagree and their business impact.
+Shows cases where they agree/disagree.
 
-📊 Key Results
-Deep Learning Model (MLP):
+Discusses business impact.
+
+📊 Results
+Deep Learning (MLP):
 
 AUC ≈ 0.70
 
@@ -115,29 +120,29 @@ F1 ≈ 0.41
 
 RL Agent (DiscreteBC):
 
-Estimated Policy Value ≈ 0.105 (profit per loan)
+Estimated Policy Value ≈ 0.105 (expected profit per loan)
 
-👉 Takeaway:
+👉 Insight:
 
-DL is good for predicting default risk.
+DL is better for risk prediction.
 
-RL directly optimizes profit, sometimes approving risky but profitable loans.
+RL directly optimizes profit (sometimes approving riskier but rewarding loans).
 
-A hybrid DL + RL system could give the best outcome.
+A hybrid system could give the best outcome.
 
-🔮 Future Improvements
-Add rejected loans + more features (credit score history, repayment trends).
+🔮 Future Work
+Include rejected loans for less biased training.
 
 Explore stronger RL algorithms (CQL, CRR).
 
-Deploy a hybrid DL–RL system for risk-aware profit optimization.
+Deploy a hybrid DL+RL system in production.
 
-Monitor performance in production and retrain as market conditions change.
+Continuously monitor performance and retrain with new data.
 
 📖 References
 Dataset: LendingClub Loan Data (Kaggle)
 
-RL Framework: d3rlpy Documentation
+RL Library: d3rlpy Documentation
 
 👩‍💻 Author
 Vaishnavi Reddy Gunapati
